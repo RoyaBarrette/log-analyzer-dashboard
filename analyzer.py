@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to the database file (it is created if it doesn't exist)
-connection = sqlite3.connect("logs.db")
+connection = sqlite3.connect("errors.db")
 cursor = connection.cursor()
 
 # Make the table
@@ -35,4 +35,4 @@ for line in lines:
 connection.commit()
 connection.close()
 
-print("Done! Errors saved to logs.db")
+print("Done! Errors saved to errors.db")

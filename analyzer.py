@@ -33,6 +33,28 @@ for line in lines:
 
 # Save and close
 connection.commit()
+
+
+# Read the errors back from the database
+cursor.execute("SELECT log_date, log_time, error_message FROM error_logs")
+rows = cursor.fetchall()
+
+# Build the web page text
+html = "<h1>Server Errors</h1>"
+html = html + "<table border='1'>"
+html = html + "<tr><th>Date</th><th>Time</th><th>Message</th></tr>"
+
+for row in rows:
+    html = html + "<tr><td>" + row[0] + "</td><td>" + row[1] + "</td><td>" + row[2] + "</td></tr>"
+
+html = html + "</table>"
+
+# Write the page to a file
+page = open("errors.html", "w")
+page.write(html)
+page.close()
+
+
 connection.close()
 
 print("Done! Errors saved to errors.db")

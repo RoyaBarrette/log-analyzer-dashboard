@@ -58,5 +58,3 @@ page.close()
 connection.close()
 
 print("Done! Errors saved to errors.db")
-
-#comment
